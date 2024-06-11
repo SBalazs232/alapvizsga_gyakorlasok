@@ -1,0 +1,19 @@
+# NÉV:
+
+# 1. Feladat
+# Kérjen be a felhasználótól 3 számot (a,b,n)!
+# A második számot addig kérje be, amíg mindenképpen
+# legyen legalább 100-zal nagyobb az 'a' a 'b'-nél. (ellenőrzés)
+# Generáljon ezen az intervallumon n db egész számot! (a-b)
+# Számolja meg és írja ki, hogy a generált számok között 
+# hány darab olyan szám van, amely négyzetszám.
+#----------------------------------------------------------
+
+#2. feladat
+
+# Kérje be 3 felhasználó nevét és magasságát (cm), testsúlyát (kg).
+# A magasság és súly adatokat addig kérje be, 
+# amíg nem megfelelő értéket kap. (100-220cm/40-200 kg) (ellenőrzés)
+# Határozza meg, ki a legmagasabb, és ki a legnehezebb!
+
+

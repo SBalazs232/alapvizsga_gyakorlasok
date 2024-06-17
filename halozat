@@ -1,0 +1,42 @@
+Ágazati alapvizsgához szükséges IOS parancsok gyűjteménye
+IP-cím, alhálózati maszk, alapértelmezett átjáró beállítása switch-en:	Switch(config)#interface vlan 1
+Switch(config-if)#ip address 192.168.10.5 255.255.255.0
+Switch(config-if)#no shutdown
+Switch(config-if)#exit
+Switch(config)#ip default-gateway 192.168.10.1
+IP-cím, alhálózati maszk beállítása routeren:	Router(config)#interface gigabitethernet0/0
+Router(config-if)#ip address 192.168.10.1 255.255.255.0
+Router(config-if)#no shutdown
+Jelszavak beállítása switch-en/routeren:	
+1.	titkos jelszó (secret)	Switch(config)#enable secret cisco
+2.	Telnet hozzáférés (vty)	Switch(config)#line vty 0
+Switch(config-line)#password cisco
+Switch(config-line)#login
+3.	konzol bejelentkezés (console)	Switch(config-line)#line console 0
+Switch(config-line)#password cisco
+Switch(config-line)#login
+4.	jelszó titkosítás	Switch(config)#service password-encryption
+Felhasználónév létrehozása titkos jelszóval:	Router(config)# username admin secret cisco
+helyi hitelesítés vty vonalon:	Router(config)#line vty 0
+Router(config-line)#login local
+Parancssori állomásnév beállítása:	Router(config)# hostname Router-1
+Belépési (banner) üzenet beállítása:	Router(config)# banner motd #Belepes csak jelszoval! #
+Interfész leírás megadása Ethernet, VLAN interfészeken:	Router(config)# interface gigabitethernet0/0
+Router(config-if)# description Iroda-LAN interfesz
+Egyéb adminisztratív utasítások:	
+konfiguráció mentése NVRAM-ba:	Router#copy running-config startup-config
+konfiguráció mentése TFTP szerverre:	Router#copy running-config tftp
+aktív konfiguráció megtekintése:	Router#show running-config
+interfészek rövid összefoglalója:	Router#show ip interface brief
+Statikus alapértelmezett útvonal létrehozása	Router(config)# ip route 0.0.0.0 0.0.0.0 se0/0/0
+SSH konfigurálása:	
+1. egyedi állomásnév beállítása:	Router(config)#hostname R1
+2. IP tartománynév beállítása:	R1(config)#ip domain name jedlik.eu
+3. titkosító kulcs létrehozása:	R1(config)#crypto key generate rsa
+…  How many bits in the modulus [512]: 1024
+4. helyi felhasználó létrehozása:	R1(config)#username admin secret Abc123456
+5. belépés engedélyezése helyi adatbázis alapján	R1(config)#line vty 0
+R1(config-line)#login local
+6. SSH kapcsolódás engedélyezése: 	R1(config-line)#transport input ssh
+7. SSH 2-es verziójának beállítása: 	R1(config)#ip ssh version 2
+
